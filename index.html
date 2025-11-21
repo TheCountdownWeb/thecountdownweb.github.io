@@ -195,42 +195,39 @@
     update();
   </script>
   <script>
-        const UMAMI_URL = 'https://cloud.umami.is'; 
-        const WEBSITE_ID = '3d6feec7-b8c6-403a-a721-f5254bb3151a'; 
-        const SHARE_TOKEN = '4bP75bIFT9VKOUkR'; 
+    const UMAMI_URL = 'https://cloud.umami.is'; 
+    const WEBSITE_ID = '3d6feec7-b8c6-403a-a721-f5254bb3151a'; 
+    const SHARE_TOKEN = '4bP75bIFT9VKOUkR'; 
 
-        async function updateVisitorCount() {
-            try {
-                // We use the specific API endpoint for active users
-                const response = await fetch(`${UMAMI_URL}/api/websites/${WEBSITE_ID}/active-users`, {
-                    method: 'GET',
-                    headers: {
-                        // This header provides read-only access using the public share token
-                        'x-umami-share-token': SHARE_TOKEN,
-                        'Accept': 'application/json',
-                    },
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Network response was not ok: ' + response.statusText);
-                }
+    async function updateVisitorCount() {
+        try {
+            // Append the token as a URL query parameter instead of a header
+            const API_ENDPOINT = `${UMAMI_URL}/api/websites/${WEBSITE_ID}/active-users?token=${SHARE_TOKEN}`;
 
-                const data = await response.json();
-                // The response data contains the count in the 'active' field
-                document.getElementById('visitor-count').textContent = data.active; 
-
-            } catch (error) {
-                console.error('Failed to fetch visitor count:', error);
-                document.getElementById('visitor-count').textContent = 'Error';
+            const response = await fetch(API_ENDPOINT, {
+                method: 'GET',
+                // We no longer include the 'x-umami-share-token' header here
+                headers: {
+                    'Accept': 'application/json',
+                },
+            });
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
             }
+
+            const data = await response.json();
+            document.getElementById('visitor-count').textContent = data.active; 
+
+        } catch (error) {
+            console.error('Failed to fetch visitor count:', error);
+            document.getElementById('visitor-count').textContent = 'Error';
         }
+    }
 
-        // Run the function immediately when the page loads
-        updateVisitorCount();
-
-        // Update the count every 30 seconds to keep it live
-        setInterval(updateVisitorCount, 30000); 
-    </script>
+    updateVisitorCount();
+    setInterval(updateVisitorCount, 30000); 
+</script>
   <script src="/celebration.js"></script>
 </body>
 </html>

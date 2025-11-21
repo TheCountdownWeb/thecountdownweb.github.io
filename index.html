@@ -79,7 +79,6 @@
       
     </p>
   </div>
-  <p class="small-text">Live people streaming: <span id="visitor-count" class="small-text">Loading...</span></p>
   <p class="small-text"> <br><br><br><br><br><br><br> </p>
   <p class="small-text">Copyright © 2025 Rutham Renish - <a class="small-text" href="/LICENSE">Licensed by MIT</a></p>
   <audio id="waitAudio" preload="auto" loop src="/waitmusic.mp3"></audio>
@@ -194,40 +193,6 @@
     const timer = setInterval(update, 1);
     update();
   </script>
-  <script>
-    const UMAMI_URL = 'https://cloud.umami.is'; 
-    const WEBSITE_ID = '3d6feec7-b8c6-403a-a721-f5254bb3151a'; 
-    const SHARE_TOKEN = '4bP75bIFT9VKOUkR'; 
-
-    async function updateVisitorCount() {
-        try {
-            // Append the token as a URL query parameter instead of a header
-            const API_ENDPOINT = `${UMAMI_URL}/api/websites/${WEBSITE_ID}/active-users?token=${SHARE_TOKEN}`;
-
-            const response = await fetch(API_ENDPOINT, {
-                method: 'GET',
-                // We no longer include the 'x-umami-share-token' header here
-                headers: {
-                    'Accept': 'application/json',
-                },
-            });
-            
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-            }
-
-            const data = await response.json();
-            document.getElementById('visitor-count').textContent = data.active; 
-
-        } catch (error) {
-            console.error('Failed to fetch visitor count:', error);
-            document.getElementById('visitor-count').textContent = 'Error';
-        }
-    }
-
-    updateVisitorCount();
-    setInterval(updateVisitorCount, 30000); 
-</script>
   <script src="/celebration.js"></script>
 </body>
 </html>

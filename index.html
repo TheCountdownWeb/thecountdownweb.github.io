@@ -53,7 +53,7 @@
   </style>
 </head>
 <body>
-  <div id="tapOverlay">Tap to see and hear The RR Summer Countdown - Audio Recommended</div>
+  <div id="tapOverlay">Tap to see and hear the changing of the GC name - Audio Recommended</div>
 
   <div class="countdown" id="countdownContainer">
     <div class="time-segment"><span id="weeks" class="number">0</span><span class="label">Weeks</span></div>
@@ -68,12 +68,12 @@
 
   <div class="finished-message" id="finishedMessage">
     <div class="finished-title">
-      <span class="word-happy">Happy</span>
-      <span class="word-summer">Winter</span>
-      <span class="word-holiday">Holiday</span>
+      <span class="word-happy">GC</span>
+      <span class="word-summer">Name</span>
+      <span class="word-holiday">Changed</span>
     </div>
     <p class="small-text" style="color:#4193c9;">
-      Also this website will update soon, like make your own countdowns and send them so tune in to check it out! Like seriously, new stuff coming soon!!
+      Its gonna change soon also if ties are present a wheel spin will be done and proof will be sent. And so the cult and rebellion is over
     </p>
     <p class="small-text">
       
@@ -85,7 +85,7 @@
   <audio id="outroAudio" preload="auto" loop src="/outromusic.mp3"></audio>
 
   <script>
-    const target = new Date(2025, 11, 5, 12, 0, 0, 0).getTime();
+    const target = new Date(2025, 10, 30, 18, 30, 0, 0).getTime();
     const overlay = document.getElementById("tapOverlay");
     const cd      = document.getElementById("countdownContainer");
     const rec     = document.getElementById("recommendedAudio");
@@ -105,10 +105,10 @@
         state = 2;
         cd.style.display = "none";
         fin.style.display = "flex";
-        overlay.textContent = "Tap to see our Holiday Message and Special Thanks Credits of 2025";
+        overlay.textContent = "Tap to see our changing of the name credits";
         overlay.classList.remove("hidden");
       } else {
-        overlay.textContent = "Tap to see and hear The RR Summer Countdown - Audio Recommended";
+        overlay.textContent = "Tap to see and hear the changing of the GC name - Audio Recommended";
         overlay.classList.remove("hidden");
       }
     }
@@ -152,7 +152,7 @@
           waitA.pause();
           waitA.currentTime = 0;
           rec.style.display = "none";
-          overlay.textContent = "Tap to countdown to Summer - Audio Recommended A LOT";
+          overlay.textContent = "Tap to countdown to the changing of the GC name - Audio Recommended A LOT";
           overlay.classList.remove("hidden");
         }
       }

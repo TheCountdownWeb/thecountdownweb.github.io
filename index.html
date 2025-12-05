@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Counting down</title>
+  <title>The Countdown Web</title>
   <link rel="icon" type="image/jpeg" href="https://www.publicdomainpictures.net/pictures/80000/velka/clock-icon.jpg">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3d6feec7-b8c6-403a-a721-f5254bb3151a"></script>
   <style>
@@ -53,7 +53,7 @@
   </style>
 </head>
 <body>
-  <div id="tapOverlay">Tap to see and hear the changing of the GC name - Audio Recommended</div>
+  <div id="tapOverlay">Tap to see and hear the countdown - Audio Recommended</div>
 
   <div class="countdown" id="countdownContainer">
     <div class="time-segment"><span id="weeks" class="number">0</span><span class="label">Weeks</span></div>
@@ -68,12 +68,12 @@
 
   <div class="finished-message" id="finishedMessage">
     <div class="finished-title">
-      <span class="word-happy">GC</span>
-      <span class="word-summer">Name</span>
-      <span class="word-holiday">Changed</span>
+      <span class="word-happy">Happy</span>
+      <span class="word-summer">Winter</span>
+      <span class="word-holiday">Holiday</span>
     </div>
     <p class="small-text" style="color:#4193c9;">
-      Its gonna change soon also if ties are present a wheel spin will be done and proof will be sent. And so the cult and rebellion is over
+      This website is gonna update too by the way!
     </p>
     <p class="small-text">
       
@@ -85,7 +85,7 @@
   <audio id="outroAudio" preload="auto" loop src="/outromusic.mp3"></audio>
 
   <script>
-    const target = new Date(2025, 10, 30, 18, 30, 0, 0).getTime();
+    const target = new Date(2025, 11, 5, 12, 0, 0, 0).getTime();
     const overlay = document.getElementById("tapOverlay");
     const cd      = document.getElementById("countdownContainer");
     const rec     = document.getElementById("recommendedAudio");
@@ -105,10 +105,10 @@
         state = 2;
         cd.style.display = "none";
         fin.style.display = "flex";
-        overlay.textContent = "Tap to see our changing of the name credits";
+        overlay.textContent = "Tap to see our final message";
         overlay.classList.remove("hidden");
       } else {
-        overlay.textContent = "Tap to see and hear the changing of the GC name - Audio Recommended";
+        overlay.textContent = "Tap to see and hear the countdown - Audio Recommended";
         overlay.classList.remove("hidden");
       }
     }
@@ -121,7 +121,7 @@
         overlay.classList.add("hidden");
         waitA.muted = false;
         waitA.play().catch(() => {});
-        rec.textContent = "Audio Recommended – Imperial March (Star Wars), John Williams";
+        rec.textContent = "Audio Recommended – Assumptions, Sam Gellaitry";
         rec.style.display = "block";
       } else if (state === 2) {
         // start outro
@@ -152,7 +152,7 @@
           waitA.pause();
           waitA.currentTime = 0;
           rec.style.display = "none";
-          overlay.textContent = "Tap to countdown to the changing of the GC name - Audio Recommended A LOT";
+          overlay.textContent = "Tap to countdown - Audio Recommended A LOT";
           overlay.classList.remove("hidden");
         }
       }
